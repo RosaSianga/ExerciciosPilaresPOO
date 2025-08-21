@@ -30,9 +30,9 @@ public class ContaBancaria implements OperacoesConta{
 
     // Metodos
     @Override
-    public void depositar(String conta, double valor) {
+    public void depositar(double valor) {
         saldo = saldo + valor;
-        System.out.println("Deposito Realizado com sucesso");
+        System.out.println("Deposito Realizado com sucesso no valor de " + valor);
         consultarSaldo();
         System.out.println("-------------------------");
 
@@ -42,11 +42,11 @@ public class ContaBancaria implements OperacoesConta{
     public void sacar(double valor) {
         if (valor <= saldo) {
             saldo = saldo - valor;
-            System.out.println("Saque Realizado com sucesso");
+            System.out.println("Saque Realizado com sucesso no valor de " + valor);
             consultarSaldo();
             System.out.println("-------------------------");
         } else {
-            System.out.println("Saque recusado - Saldo é insuficiente");
+            System.out.println("Saque recusado - Saldo é insuficiente para sacar o valor de " + valor);
             System.out.println("-----------------------------");
         }
     }
@@ -61,11 +61,11 @@ public class ContaBancaria implements OperacoesConta{
     }
 
     @Override
-    public void transferir(String conta, double valor) {
+    public void transferir(ContaBancaria conta, double valor) {
 
         sacar(2000.00);
-        depositar(conta, 2000.00);
-        consultarSaldo();
+        conta.depositar(2000.00);
+        conta.consultarSaldo();
 
     }
 

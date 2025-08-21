@@ -5,6 +5,8 @@ import formas.FormaGeometrica;
 import formas.Quadrado;
 import produto.Exibivel;
 import produto.Produto;
+import tarefa.Concluivel;
+import tarefa.Tarefa;
 
 public class Main {
     public static void main(String[] args) {
@@ -26,11 +28,18 @@ public class Main {
 
 //  2. Conta Bancária
 
-        OperacoesConta banco = new ContaBancaria("145893", 1000.00);
-        banco.consultarSaldo();
-        banco.depositar("145893", 3000.00);
-        banco.sacar(1000.00);
-        //banco.transferir("596321",2000.00);
+        OperacoesConta conta1 = new ContaBancaria("145893", 1000.00);
+        OperacoesConta conta2 = new ContaBancaria("596321", 0.00);
+
+        conta1.consultarSaldo();
+        conta1.depositar(3000.00);
+        conta1.sacar(1000.00);
+        conta1.transferir((ContaBancaria) conta2,2000.00);
+
+//  3. Tarefa
+
+        Concluivel tarefa = new Tarefa("Matematica");
+        tarefa.estaConcluida();
 
     }
 }
